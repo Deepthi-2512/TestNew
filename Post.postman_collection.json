@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "088e31ef-e35b-49e1-a0e4-4e03e7d11e6e",
+		"name": "Post",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ShuffleTheCards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"getdeckid\", function () {\r",
+							"    let responseData = pm.response.json();\r",
+							"     console.log(responseData[\"deck_id\"]);\r",
+							"     pm.globals.set(\"deck_id\", responseData[\"deck_id\"]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+					"protocol": "http",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						"shuffle",
+						""
+					],
+					"query": [
+						{
+							"key": "deck_count",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DrawACard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://deckofcardsapi.com/api/deck/s6bsj9pq4tv2/draw/?count=2",
+					"protocol": "http",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"s6bsj9pq4tv2",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReShuffle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://deckofcardsapi.com/api/deck/s6bsj9pq4tv2/shuffle/"
+			},
+			"response": []
+		}
+	]
+}
